@@ -1,3 +1,5 @@
+//priority queue implementation using decreased priority and arranging the inserted nodes by themselves
+
 #include<iostream>
 using namespace std;
 struct node {
