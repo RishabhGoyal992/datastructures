@@ -46,17 +46,17 @@ void deletenode(struct node * a[],int ind,int del){
 }
 void printnode(struct node * a[]){
     for(int i=0;i<size;i++){
-        printf("index %d values are :",i);
+        printf(" ||%d||  -->> ",i);
         struct node * temp = a[i];
         while(temp){
-            printf(" %d",temp->value);
+            printf(" |%d|",temp->value);
             temp=temp->next;
         }
         printf("\n");
     }
 }
 int main(){
-    printf("\nHASH TABLE IMPLEMENTATION USING CHAINING\n");
+    printf("\n\tHASH TABLE IMPLEMENTATION USING CHAINING\n");
     printf("\nenter the size of the hash table: ");
     
     scanf("%d",&size);
