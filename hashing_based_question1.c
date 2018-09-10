@@ -1,3 +1,21 @@
+/*
+Read n words and find the number of unique vowels in each of them:
+a. Hashing by Chaining
+b. Double Hashing
+c. Direct Address Table
+d. Linear Probing
+e. Quadratic Probing
+Input: (n, n-words)
+2 
+abcdefgdshfkdhfh 
+dhfhjhdkfhkdjf
+Output:
+a e 
+none
+
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
