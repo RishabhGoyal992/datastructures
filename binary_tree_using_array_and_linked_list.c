@@ -1,3 +1,8 @@
+/*
+
+binary tree implementation using array and linked list 
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
