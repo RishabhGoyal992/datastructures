@@ -5,7 +5,7 @@ binary tree implementation using array and linked list
 */
 
 
-  #include<stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 struct node * tt1=NULL;
 int a[1000];int st=0;
