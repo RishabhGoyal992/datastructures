@@ -5,9 +5,11 @@ binary tree implementation using array and linked list
 */
 
 
+
+    
 #include<stdio.h>
 #include<stdlib.h>
-struct node * tt1=NULL;
+struct node * tt1=NULL;int xx;
 int a[1000];int st=0;
 int n;int max=0;
 struct node * q[1000]; int front=0; int rear =0;
@@ -60,6 +62,13 @@ int  searchtree(struct node * p,int d){
     }
     return st;
 }
+int sizeoftree(struct node * r){
+    if(r==NULL){
+        return 0 ;
+    }
+    return (sizeoftree(r->left)+1+sizeoftree(r->right));
+}
+
 int main(){
     printf("\nBINARY TREE IMPLEMENTATION WITH SOME OPERATIONS\n");
     printf("\nenter the size of tree : ");
@@ -78,7 +87,7 @@ int main(){
     
     
     while(1){
-        printf("\nchoose\n1.calculate maximum\n2.exit\n3.search\n4.level order traversal\n5.insert new node\n6.inorder traversal\n");
+        printf("\nchoose\n1.calculate maximum\n2.exit\n3.search\n4.level order traversal\n5.insert new node\n6.inorder traversal\n7.calculate size of binary tree\n");
         int c;
         tt1 = root;
         scanf("%d",&c);
@@ -160,11 +169,16 @@ int main(){
             inorder(root);
             printf("\n");
             break;
+            
+            case 7:
+            
+             xx = sizeoftree(root);
+            printf("\n%d is the size of tree \n",xx);
+            break;
+            
             default:printf("\nchoose corret option\n");
         }
     }
     return 0;
 }
-  
-    
-          
+        
