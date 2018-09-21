@@ -5,7 +5,6 @@ binary tree implementation using array and linked list
 */
 
 
-  
   #include<stdio.h>
 #include<stdlib.h>
 struct node * tt1=NULL;
@@ -79,7 +78,7 @@ int main(){
     
     
     while(1){
-        printf("\nchoose\n1.calculate maximum\n2.exit\n3.search\n4.level order traversal\n");
+        printf("\nchoose\n1.calculate maximum\n2.exit\n3.search\n4.level order traversal\n5.insert new node\n6.inorder traversal\n");
         int c;
         tt1 = root;
         scanf("%d",&c);
@@ -123,9 +122,49 @@ int main(){
             
             break;
             
+            case 5 : 
             
+            printf("\n");
+            
+            while(tt1){
+                if(!(tt1->left)){
+                    printf("\nenter data: \n"); 
+                    int n;
+                    scanf("%d",&n);
+                    tt1->left=newnode(n);
+                    break;
+                }
+                if(!(tt1->right)){
+                    printf("\nenter data: \n"); 
+                    int n;
+                    scanf("%d",&n);
+                    tt1->right=newnode(n);
+                    break;
+                }
+                if(tt1->left){
+                    q[++rear]=tt1->left;
+                }
+                if(tt1->right){
+                    q[++rear]=tt1->right;
+                }
+                tt1=q[++front];
+            }
+            
+            front=0;
+            rear=0;
+            printf("\n");
+            break;
+            
+            case 6 : 
+            printf("\ninorder : \n");
+            inorder(root);
+            printf("\n");
+            break;
             default:printf("\nchoose corret option\n");
         }
     }
     return 0;
 }
+  
+    
+          
