@@ -2,13 +2,17 @@
 #include<stdlib.h>
 
 int a[1000];
-int n;
+int n;int x, y, z;
 
 struct node{
     int data;
     struct node * left;
     struct node * right;
 };
+
+struct node * queue[1000];
+int front = 0;
+int rear = 0;
 
 struct node * newnode(int val){
     struct node * nn = (struct node *)malloc(sizeof(struct node));
@@ -36,11 +40,20 @@ void preorder(struct node * r){
 }
 
 void heapify(struct node * r){
-    if(r && r->left && r->right){
-        int x = r->data;
-        int y = r->left->data;
-        int z = r->right->data;
-        
+    if(r && (r->left || r->right)){
+         x = r->data;
+        if(r->left){
+             y = r->left->data;
+        }
+        if(r->left==NULL){
+             y = -1000;
+        }
+        if(r->right){
+             z = r->right->data;
+        }
+        if(r->right==NULL){
+             z = -1000; 
+        }
         if(x<y){
             int temp = r->data;
             r->data = r->left->data;
@@ -51,15 +64,28 @@ void heapify(struct node * r){
             r->data = r->right->data;
             r->right->data = temp;
         }
-        
-        heapify(r->left);
-        heapify(r->right);
     }
+}
+
+void save(struct node * r){
+    queue[rear++] = r;
+    while(r){
+        if(r){
+            if(r->left){
+                queue[rear++]=r->left;
+            }
+            if(r->right){
+                queue[rear++]=r->right;
+            }
+            r = queue[front++];
+        }
+    }
+    front = 0;
 }
 
 int main(){
     struct node * root = NULL ;
-    printf("enter the number of elements : ");
+    printf("MAX-HEAP\nenter the number of elements : ");
     scanf("%d",&n);
     
     printf("\nenter the elements : \n");
@@ -71,8 +97,11 @@ int main(){
     
     preorder(root);
     
-    heapify(root);
+    save(root);
     
+    for(int i = rear-1; i>=0; i--){
+        heapify(queue[i]);
+    }
     printf("\n");
     
     preorder(root);
